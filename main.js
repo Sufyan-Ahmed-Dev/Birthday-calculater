@@ -1,13 +1,17 @@
 let form = document.querySelector("#form");
 let inputValue = document.querySelector("#userInput");
+let countdownText = document.querySelector("#countdown");
+// let countdownText = document.querySelector("#countdown-text");
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
-  inputValue = inputValue.value;
-  console.log(inputValue);
+ 
+  let userValue = inputValue.value;
+  console.log(userValue);
 
   let today = new Date();
 
-  let birthdate = new Date(inputValue);
+  let birthdate = new Date(userValue +  "T00:00");
 
   let nextBirthday = new Date(
     today.getFullYear(),
@@ -34,4 +38,6 @@ form.addEventListener("submit", (e) => {
   let result = `Time remaining until your next birthday:${months} months, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds.`;
 
   console.log(result);
+  countdownText.innerHTML = result;
+  userValue = ""
 });
